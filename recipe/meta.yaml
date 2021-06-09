@@ -1,5 +1,5 @@
 {% set name = "jupyterbook-latex" %}
-{% set version = "0.2.0" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8083d7aa71bb0dc31847be4edd2b15ef9d55b56a8cf1b07e49b3b627fb7e49c7
+  sha256: 2606e27e285d58cf8a5d9fad0b0f79a0180604e15c641a6790a4bd81667f3d63
 
 build:
   number: 0
