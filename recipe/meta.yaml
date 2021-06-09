@@ -1,13 +1,14 @@
 {% set name = "jupyterbook-latex" %}
-{% set version = "0.2.0" %}
+{% set pip_name = name.replace("-", "_") %}
+{% set version = "0.3.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8083d7aa71bb0dc31847be4edd2b15ef9d55b56a8cf1b07e49b3b627fb7e49c7
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz
+  sha256: 2606e27e285d58cf8a5d9fad0b0f79a0180604e15c641a6790a4bd81667f3d63
 
 build:
   number: 0
@@ -23,6 +24,8 @@ requirements:
     - sphinx >=3,<4
     - myst-nb
     - pyyaml
+    # this is a no-op on 3.9
+    - importlib_resources
 
 test:
   requires:
@@ -33,10 +36,9 @@ test:
     - jupyterbook_latex
     - jupyterbook_latex.theme
 
-
 about:
-  home: "https://github.com/executablebooks/jupyterbook-latex"
-  license: BSD-3-Clause 
+  home: https://github.com/executablebooks/jupyterbook-latex
+  license: BSD-3-Clause
   license_file: LICENSE
   summary: 'Jupyterbook-latex: Supporting LaTeX infrastructure for Jupyter Book'
   dev_url: https://github.com/executablebooks/jupyterbook-latex
