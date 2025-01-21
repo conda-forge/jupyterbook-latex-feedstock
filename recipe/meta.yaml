@@ -1,24 +1,24 @@
-{% set name = "jupyterbook-latex" %}
-{% set pip_name = name.replace("-", "_") %}
 {% set version = "0.3.1" %}
 
 package:
-  name: {{ name }}
+  name: jupyterbook-latex
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ pip_name }}/{{ pip_name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/j/jupyterbook-latex/jupyterbook_latex-{{ version }}.tar.gz
   sha256: 2606e27e285d58cf8a5d9fad0b0f79a0180604e15c641a6790a4bd81667f3d63
 
 build:
   number: 1
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
 requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - python >={{ python_min }}
     - sphinx >=3,<4
@@ -34,11 +34,11 @@ test:
   requires:
     - pip
     - python {{ python_min }}
-  commands:
-    - pip check
   imports:
     - jupyterbook_latex
     - jupyterbook_latex.theme
+  commands:
+    - pip check
 
 about:
   home: https://github.com/executablebooks/jupyterbook-latex
